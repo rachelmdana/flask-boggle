@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Teko&display=swap');
+</style>
+<head>
+    <title>BOGGLE Game</title>
+</head>
+
+<body>
+    <div class="game-container">
+    <h1>BOGGLE</h1>
+    <table>
+        {% for row in board %}
+        <tr>
+            {% for letter in row %}
+            <td>{{ letter }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <form onsubmit="submitWord(event);">
+        <input type="text" name="word" placeholder="Enter a word">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result-message"></p>
+    <p>Score: <span id="score-display">0</span></p>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</html>
